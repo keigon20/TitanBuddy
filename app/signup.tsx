@@ -2,18 +2,18 @@ import { Link, router } from "expo-router";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import {
-    ActivityIndicator,
-    Alert,
-    KeyboardAvoidingView,
-    Platform,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  ActivityIndicator,
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
-import { auth } from "../firebase/firebase";
+import { auth } from "@/src/lib/firebase";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -53,7 +53,7 @@ export default function Signup() {
     } catch (error: any) {
       console.error("Signup error:", error);
       let errorMessage = "Failed to create account. Please try again.";
-      
+
       if (error.code === "auth/email-already-in-use") {
         errorMessage = "An account with this email already exists";
       } else if (error.code === "auth/invalid-email") {
@@ -61,7 +61,7 @@ export default function Signup() {
       } else if (error.code === "auth/weak-password") {
         errorMessage = "Password is too weak";
       }
-      
+
       Alert.alert("Signup Error", errorMessage);
     } finally {
       setLoading(false);
@@ -73,7 +73,7 @@ export default function Signup() {
       style={styles.container}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
-      <ScrollView 
+      <ScrollView
         contentContainerStyle={styles.scrollContent}
         keyboardShouldPersistTaps="handled"
       >

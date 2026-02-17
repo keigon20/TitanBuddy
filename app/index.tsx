@@ -2,7 +2,7 @@ import { router } from "expo-router";
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
-import { auth } from "../firebase/firebase";
+import { auth } from "@/src/lib/firebase";
 
 export default function Index() {
   useEffect(() => {

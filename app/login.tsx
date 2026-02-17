@@ -2,18 +2,18 @@ import { Link, router } from "expo-router";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import {
-    ActivityIndicator,
-    Alert,
-    KeyboardAvoidingView,
-    Platform,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  ActivityIndicator,
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
-import { auth } from "../firebase/firebase";
+import { auth } from "@/src/lib/firebase";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -43,7 +43,7 @@ export default function Login() {
     } catch (error: any) {
       console.error("Login error:", error);
       let errorMessage = "Failed to login. Please try again.";
-      
+
       if (error.code === "auth/invalid-email") {
         errorMessage = "Invalid email address";
       } else if (error.code === "auth/user-not-found") {
@@ -53,7 +53,7 @@ export default function Login() {
       } else if (error.code === "auth/invalid-credential") {
         errorMessage = "Invalid email or password";
       }
-      
+
       Alert.alert("Login Error", errorMessage);
     } finally {
       setLoading(false);
@@ -65,7 +65,7 @@ export default function Login() {
       style={styles.container}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
-      <ScrollView 
+      <ScrollView
         contentContainerStyle={styles.scrollContent}
         keyboardShouldPersistTaps="handled"
       >
