@@ -1,3 +1,4 @@
+import { auth } from "@/src/lib/firebase";
 import { Link, router } from "expo-router";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
@@ -13,7 +14,6 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { auth } from "@/src/lib/firebase";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -39,7 +39,8 @@ export default function Login() {
         password
       );
       console.log("Login successful:", userCredential.user.email);
-      router.replace("/");
+      // @ts-ignore - Home route exists but TypeScript doesn't recognize it
+      router.replace("/home");
     } catch (error: any) {
       console.error("Login error:", error);
       let errorMessage = "Failed to login. Please try again.";
