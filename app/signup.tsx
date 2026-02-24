@@ -1,3 +1,4 @@
+import { auth } from "@/src/lib/firebase";
 import { Link, router } from "expo-router";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
@@ -13,7 +14,6 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { auth } from "@/src/lib/firebase";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -26,6 +26,10 @@ export default function Signup() {
   const handleSignup = async () => {
     if (!email.trim()) {
       Alert.alert("Error", "Please enter your email address");
+      return;
+    }
+    if (!email.toLowerCase().endsWith("@csu.fullerton.edu")) {
+      Alert.alert("Error", "Please use a @csu.fullerton.edu email address");
       return;
     }
     if (!password) {
