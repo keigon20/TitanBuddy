@@ -17,7 +17,14 @@ export default function Home() {
     <View style={styles.container}>
       <Text style={styles.title}>Welcome Home!</Text>
       <Text style={styles.subtitle}>You are now signed in</Text>
-      
+
+      <TouchableOpacity 
+        style={[styles.button, styles.socialButton]} 
+        onPress={() => router.push("/social")}
+      >
+        <Text style={styles.buttonText}>🎉 Campus Events</Text>
+      </TouchableOpacity>
+
       <TouchableOpacity style={styles.button} onPress={handleLogout}>
         <Text style={styles.buttonText}>Sign Out</Text>
       </TouchableOpacity>
@@ -50,6 +57,10 @@ const styles = StyleSheet.create({
     padding: 18,
     alignItems: "center",
     width: "100%",
+    marginBottom: 12,
+  },
+  socialButton: {
+    backgroundColor: "#34C759",
   },
   buttonText: {
     color: "#fff",
