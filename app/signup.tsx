@@ -53,8 +53,9 @@ export default function Signup() {
         password
       );
       console.log("Signup successful:", userCredential.user.email);
-      // @ts-ignore - Home route exists but TypeScript doesn't recognize it
-      router.replace("/home");
+      // After signup, send new users to onboarding setup
+      // @ts-ignore - setup route exists but TypeScript may not recognize it
+      router.replace("/setup");
     } catch (error: any) {
       console.error("Signup error:", error);
       let errorMessage = "Failed to create account. Please try again.";
