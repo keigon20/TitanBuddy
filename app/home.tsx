@@ -25,6 +25,13 @@ export default function Home() {
         <Text style={styles.buttonText}>🎉 Campus Events</Text>
       </TouchableOpacity>
 
+      <TouchableOpacity 
+        style={[styles.button, styles.marketplaceButton]} 
+        onPress={() => router.push("/marketplace")}
+      >
+        <Text style={styles.buttonText}>🛒 Campus Marketplace</Text>
+      </TouchableOpacity>
+
       <TouchableOpacity style={styles.button} onPress={handleLogout}>
         <Text style={styles.buttonText}>Sign Out</Text>
       </TouchableOpacity>
@@ -61,6 +68,9 @@ const styles = StyleSheet.create({
   },
   socialButton: {
     backgroundColor: "#34C759",
+  },
+  marketplaceButton: {
+    backgroundColor: "#FF9500",
   },
   buttonText: {
     color: "#fff",

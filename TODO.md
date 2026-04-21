@@ -1,10 +1,29 @@
-# Login & Signup Implementation TODO
+# TitanBuddy - Marketplace Page Implementation TODO
 
-## Steps to Complete:
-- [x] 1. Update firebase/firebase.js - Add Firebase Authentication
-- [x] 2. Create app/login.tsx - Login page with Firebase auth
-- [x] 3. Create app/signup.tsx - Signup page with Firebase auth
-- [x] 4. Update app/_layout.tsx - Configure navigation routes
+**Status:** Complete - Files updated  
+**Date:** Current session  
+**Similar to:** app/social.tsx (events page)  
+**Key Changes:** Firestore "listings" collection, fields: title, description, price, condition, category. No pickup location. Interest toggle instead of join.
 
-## Progress: ✅ All tasks completed
+## Step-by-Step Plan
+
+1. [x] Create `app/marketplace.tsx` (full page, copy/adapt social.tsx structure)  
+2. [x] Edit `app/home.tsx` (add 🛒 Marketplace button)  
+3. [x] Edit `app/_layout.tsx` (add marketplace route to Stack)  
+4. [ ] Test functionality (`npx expo start`)  
+5. [ ] Update Firestore security rules for "listings"  
+6. [x] Mark complete  
+
+**Post-completion:** Run \`npx expo start --clear\` to test. Create listing via home → marketplace.
+
+**Firestore Rules Suggestion (add to rules):**  
+```
+match /listings/{listing} {
+  allow read: if true;  
+  allow write: if request.auth != null;
+  allow update: if request.auth != null && (request.auth.uid in resource.data.interestedUsers || request.auth.uid == resource.data.sellerId);
+}
+```
+
+✅ Marketplace page added successfully! Ready for testing.
 
